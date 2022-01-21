@@ -3,13 +3,13 @@
 #include<time.h>
 
 int main(){
-    int number,guess,num_guess=1;
+    int number,guess,count=1, guess_chance=10;
     srand(time(0));
     number = rand()%100 +1; //generate number between 1-100
-    printf("The Number Is %d\n",number);
     
-    while (guess!=number){
-        printf("Guess the number between 1 to 100\n");
+    printf("\nGuess the number between 1 to 100");
+    while (1<=guess_chance){
+        printf("\n\nEnter Your Guess: ");
         scanf("%d", &guess);
         if(guess>number){
             printf("Lower number please!\n");
@@ -18,9 +18,17 @@ int main(){
             printf("Higher number please!\n");
         }
         else{
-            printf("You guessed it in %d attempts\n", num_guess);
+            printf("You guessed it in %d attempts\n", count);
+            break;
         }
-        num_guess++;
+        guess_chance--;
+        printf("%d Chance left.",guess_chance);
+        count++;
+        printf("");
+    }
+    if (guess_chance==0){
+        printf("\n\nGame Over!!!");
+        printf("\nNumber is %d",number);
     }
     
     return 0;
